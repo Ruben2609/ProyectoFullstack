@@ -3,7 +3,7 @@ const Team   = require('../models/Team');
 
 // GET all
 router.get('/', async (req, res) => {
-  const list = await Team.find().populate('members', 'name'); 
+  const list = await Team.find(); 
   res.json(list);
 });
 
