@@ -17,12 +17,37 @@ services:
     depends_on:
       - mongo
 
+  tasks:
+    build: ./services/tasks
+    ports:
+      - "5002:5002"
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/tasks
+    depends_on:
+      - mongo
+  teams:
+    build: ./services/teams
+    ports:
+      - "5003:5003"
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/teams
+    depends_on:
+      - mongo
+
   gateway:
     build: ./api-gateway
     ports:
       - "4000:4000"
     depends_on:
       - projects
-
+      - tasks
+      - teams
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - gateway
+    
 volumes:
   mongo_data:

@@ -15,7 +15,7 @@ const PORT = process.env.PORT || 5001;
 
 mongoose.connect(process.env.MONGO_URI)
   .then(() => {
-    console.log(' Servicio de Proyectos conectado a MongoDB');
-    app.listen(PORT, () => console.log(` Servicio de Proyectos escuchando en http://localhost:${PORT}`));
+    console.log(' Servicio de Projects conectado a MongoDB');
+    app.listen(PORT, () => console.log(` Servicio de Projects escuchando en http://localhost:${PORT}`));
   })
   .catch(err => console.error('Error conectando:', err));
